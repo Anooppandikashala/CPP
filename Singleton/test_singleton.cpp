@@ -1,7 +1,20 @@
 #include<iostream>
 
-//implementation of singleton
+/*
+*
+*
+Output:
 
+0x55cac88d0e70
+6333
+0x55cac88d0e70
+9999
+9999
+
+
+*
+*/
+//implementation of singleton
 class Test
 {
 private:
