@@ -1,0 +1,52 @@
+#include <iostream>
+
+enum class Standard1
+{
+    AISC_V14_IMPERIAL = 0,
+    AISC_V14_METRIC = 1,
+    AISC_V14_CAN_METRIC = 2,
+
+    AISC_V13_IMPERIAL = 3,
+    AISC_V13_METRIC = 4,
+    AISC_V13_CAN_METRIC = 5,
+
+    CISC_S16_14_IMPERIAL = 6,
+    CISC_S16_14_METRIC = 7,
+    CISC_S16_14_CAN_METRIC = 8
+};
+
+enum class Standard
+{
+    AISC_V14_IMPERIAL = 100,
+    AISC_V14_METRIC = 101,
+    AISC_V14_CAN_METRIC = 200,
+
+    AISC_V13_IMPERIAL,
+    AISC_V13_METRIC,
+    AISC_V13_CAN_METRIC,
+
+    CISC_S16_14_IMPERIAL,
+    CISC_S16_14_METRIC,
+    CISC_S16_14_CAN_METRIC
+};
+
+#ifdef DESIGN_CODE_AISC_13
+#define STANDARD_ENUM_START_INDEX 3
+#define STANDARD_ENUM_END_INDEX 3
+#elif defined DESIGN_CODE_AISC_14
+#define STANDARD_ENUM_START_INDEX 0
+#define STANDARD_ENUM_END_INDEX 2
+#elif defined DESIGN_CODE_CISC_S16_14
+#define STANDARD_ENUM_START_INDEX 6
+#define STANDARD_ENUM_END_INDEX 8
+#else
+#define STANDARD_ENUM_START_INDEX 0
+#define STANDARD_ENUM_END_INDEX 300
+#endif
+
+template <Standard MyStandard>
+class A
+{
+public:
+    void print();
+};
